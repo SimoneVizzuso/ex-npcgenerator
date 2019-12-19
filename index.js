@@ -22,6 +22,11 @@ MongoClient.connect('mongodb://localhost:27017/', { useUnifiedTopology: true }, 
   appearance = db.collection('appearance');
   talents = db.collection('talents')
   races = db.collection('races')
+  gender = db.collection('gender')
+  femaleName = db.collection('femaleNames')
+  maleName = db.collection('maleNames')
+  highAbility = db.collection('highAbility')
+  lowAbility = db.collection('lowAbility')
 })
 
 app.get('/appearance', (req, res) => {
@@ -38,6 +43,36 @@ app.get('/talents', (req, res) => {
 
 app.get('/races', (req, res) => {
     races.find({}).toArray(function(err, result) {
+        res.send(result)
+    })
+})
+
+app.get('/gender', (req, res) => {
+    gender.find({}).toArray(function(err, result) {
+        res.send(result)
+    })
+})
+
+app.get('/maleNames', (req, res) => {
+    maleName.find({}).toArray(function(err, result) {
+        res.send(result)
+    })
+})
+
+app.get('/femaleNames', (req, res) => {
+    femaleName.find({}).toArray(function(err, result) {
+        res.send(result)
+    })
+})
+
+app.get('/highAbility', (req, res) => {
+    highAbility.find({}).toArray(function(err, result) {
+        res.send(result)
+    })
+})
+
+app.get('/lowAbility', (req, res) => {
+    lowAbility.find({}).toArray(function(err, result) {
         res.send(result)
     })
 })
